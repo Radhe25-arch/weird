@@ -121,8 +121,50 @@ body[data-pg=checkout] footer.ft,body[data-pg=login] footer.ft,body[data-pg=sign
 .ck{grid-template-columns:minmax(0,1fr) minmax(300px,400px);gap:4vw;min-height:100svh;align-content:start;padding:110px 4vw 90px}.cks{align-self:start}.ck .cg input,.ck .cg select{width:100%;min-width:0}
 @media(max-width:900px){.ck{grid-template-columns:1fr}}
 </style>
-<style>body:not(.ready){visibility:hidden}body.ready{visibility:visible}</style><style>.hl .ch{display:inline-block;backface-visibility:hidden;transform:translateZ(0);will-change:transform}</style></head><body>
-<nav><a class="logo" href="#/">WIERD™</a><div class="m"><a class="h" href="#/products">SHOP ALL</a><a class="h" href="#/collections">COLLECTIONS</a><a class="h" href="#/about">ABOUT</a><a onclick="srch()">SEARCH</a><a href="#/account" id="acc">ACCOUNT</a><a onclick="drawer(1)" id="bag">BAG</a></div></nav>
+<style>body:not(.ready){visibility:hidden}body.ready{visibility:visible}</style><style>.hl .ch{display:inline-block;backface-visibility:hidden;transform:translateZ(0);will-change:transform}</style><style>
+.le-page{background:#0a0a10;color:#f2f0ea;margin:-90px -4vw 0;padding:90px 0 0;overflow:hidden}
+.le-hero{min-height:70svh;padding:9vh 5vw 7vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;isolation:isolate;background:radial-gradient(ellipse at 78% 30%,#7a2cff38,transparent 42%),radial-gradient(ellipse at 12% 80%,#ff6a1730,transparent 40%),#0a0a10}
+.le-hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent)}
+.le-kicker{font:700 11px 'Space Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:#d4ff3a;display:flex;align-items:center;gap:12px}
+.le-kicker:before{content:"";width:32px;height:1px;background:#d4ff3a}
+.le-hero h1{font:900 clamp(52px,10vw,150px)/.9 Unbounded, sans-serif;letter-spacing:-.075em;max-width:1000px;margin:28px 0 24px;text-transform:uppercase}
+.le-hero h1 span{color:#d4ff3a}
+.le-intro{max-width:510px;color:#bcbab5;font-size:clamp(14px,1.4vw,18px);line-height:1.65}
+.le-meta{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:48px;padding-top:18px;border-top:1px solid #ffffff25;color:#aaa;font:11px 'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.le-meta strong{color:#f2f0ea}
+.le-gallery{padding:7vh 4vw 10vh;background:#f2f0ea;color:#0a0a10}
+.le-gallery-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:0 1vw 34px}
+.le-gallery-head h2{font:900 clamp(30px,5vw,68px)/.98 Unbounded,sans-serif;letter-spacing:-.06em;max-width:620px}
+.le-gallery-head p{font:11px 'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#777;max-width:210px;line-height:1.6}
+.le-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.le-card{min-width:0;position:relative;background:#e7e4dc;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;transform:translateY(28px);opacity:0;transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s}
+.le-card:hover{transform:translateY(-9px);box-shadow:0 24px 50px #15151520}
+.le-card-visual{height:clamp(280px,42vw,590px);position:relative;overflow:hidden;display:flex;justify-content:center;align-items:center;background:linear-gradient(155deg,#f8f6f0,#d9d5cc)}
+.le-card-visual img{height:100%;width:100%;object-fit:contain;object-position:center bottom;mix-blend-mode:multiply;transition:transform .8s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 18px 16px #0002)}
+.le-card:hover .le-card-visual img{transform:scale(1.055) rotate(-1deg)}
+.le-number{position:absolute;left:14px;top:14px;z-index:2;font:11px 'Space Mono',monospace;color:#777}
+.le-tag{position:absolute;right:12px;top:12px;border:1px solid #17171755;border-radius:99px;padding:6px 9px;font:9px 'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
+.le-card-copy{padding:19px 17px 22px;min-height:190px;display:flex;flex-direction:column;background:#f2f0ea}
+.le-character{font:800 clamp(17px,1.65vw,24px) Unbounded,sans-serif;letter-spacing:-.05em;text-transform:uppercase}
+.le-quote{font:500 clamp(13px,1.1vw,16px)/1.45 'Space Grotesk',sans-serif;margin-top:12px;min-height:48px;color:#34332f}
+.le-quote em{font-style:normal;color:#777}
+.le-card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:18px;border-top:1px solid #17171720;font:9px 'Space Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:#777}
+.le-card-foot b{color:#0a0a10}
+.le-manifesto{padding:12vh 6vw 13vh;background:#d4ff3a;color:#0a0a10;position:relative;overflow:hidden}
+.le-manifesto small{font:700 10px 'Space Mono',monospace;letter-spacing:.16em;text-transform:uppercase}
+.le-manifesto blockquote{font:900 clamp(34px,7vw,100px)/.98 Unbounded,sans-serif;letter-spacing:-.07em;max-width:1100px;margin:28px 0 30px}
+.le-manifesto blockquote span{display:inline-block;overflow:hidden;vertical-align:bottom}
+.le-manifesto blockquote i{display:inline-block;font-style:normal;transform:translateY(110%)}
+.le-manifesto p{font:11px 'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
+.le-bottom{padding:36px 5vw;background:#0a0a10;color:#f2f0ea;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.le-bottom a{border:1px solid #f2f0ea66;border-radius:99px;padding:13px 19px;font:10px 'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;transition:.3s}
+.le-bottom a:hover{background:#d4ff3a;color:#0a0a10;border-color:#d4ff3a}
+@media(max-width:1100px){.le-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.le-card-visual{height:440px}}
+@media(max-width:700px){.le-page{margin:-90px -4vw 0}.le-hero{min-height:66svh;padding:8vh 6vw 6vh}.le-gallery{padding:7vh 4vw}.le-gallery-head{display:block}.le-gallery-head p{margin-top:16px}.le-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.le-card-visual{height:340px}.le-card-copy{padding:14px 12px;min-height:178px}.le-manifesto{padding:10vh 6vw}.le-meta{font-size:9px}}
+@media(max-width:390px){.le-grid{grid-template-columns:1fr}.le-card-visual{height:480px}}
+@media(prefers-reduced-motion:reduce){.le-card,.le-card-visual img,.le-bottom a{transition:none!important}.le-card{opacity:1;transform:none}}
+</style></head><body>
+<nav><a class="logo" href="#/">WIERD™</a><div class="m"><a class="h" href="#/products">SHOP ALL</a><a class="h" href="#/collections">COLLECTIONS</a><a class="h" href="#/limited-edition">LIMITED EDITION</a><a class="h" href="#/about">ABOUT</a><a onclick="srch()">SEARCH</a><a href="#/account" id="acc">ACCOUNT</a><a onclick="drawer(1)" id="bag">BAG</a></div></nav>
 <div id="cv"><span>WIERD™</span></div><div id="app"></div>
 <footer class="ft"><div class="ft1"><div><h3>Stay different.</h3><p>Drops, restocks and the occasional unhinged caption. No spam, only chains.</p><form onsubmit="event.preventDefault();this.reset();toast('You’re on the list')"><input type="email" placeholder="Your email" required aria-label="Email"><button class="btn ac">Join</button></form></div><div class="fc"><div><h4>Shop</h4><a href="#/products">All pieces</a><a href="#/collections/nova">NOVA</a><a href="#/collections/bubble">BUBBLE</a><a href="#/collections/void">VOID</a><a href="#/collections/drip">DRIP</a><a href="#/collections/chaos">CHAOS</a></div><div><h4>Help</h4><a href="#/track-order">Track order</a><a href="#/shipping-policy">Shipping</a><a href="#/returns-policy">Returns</a><a href="#/faq">FAQ</a><a href="#/contact">Contact</a></div><div><h4>WIERD</h4><a href="#/about">About</a><a href="#/account">Your account</a><a href="#/account/wishlist">Wishlist</a><a href="#/cart">Your bag</a></div><div><h4>Follow</h4><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">YouTube</a><a href="#">WhatsApp</a></div></div></div><div class="wm2"><i>W</i><i>I</i><i>E</i><i>R</i><i>D</i><i>™</i></div><div class="ft3"><span>© 2026 WIERD™. Wear the different.</span><span>316L stainless steel · Free shipping over ₹2,999</span><div class="pay"><span>UPI</span><span>Cards</span><span>Netbanking</span><span>Wallets</span></div><span><a href="#/admin">Admin</a> · <a href="#/setup">Setup</a> · <a onclick="scrollTo({top:0,behavior:'smooth'})">Back to top ↑</a></span></div></footer>
 <div class="ov" id="sr"><div class="row" style="justify-content:space-between"><h2 style="font-size:40px">Search</h2><a onclick="srch(0)">CLOSE ✕</a></div><input id="q" placeholder="Search products or collections" style="margin:20px 0;font-size:22px" oninput="sres()"><div id="sres"></div></div>
@@ -285,4 +327,26 @@ if(h==location.hash){scrollTo({top:0,behavior:'smooth'});return}if(pth(h)==pth(l
 document.addEventListener('keydown',e=>{const t=e.target;if(e.key=='Enter'&&t.tagName=='INPUT'&&t.form&&t.form.hasAttribute('onsubmit')&&!['submit','button','checkbox','radio'].includes(t.type)){e.preventDefault();sub(t.form)}},true);
 const oa3=window.anim;window.anim=h=>{document.body.dataset.pg=pth(location.hash)||'home';oa3(h)};
 window.logout=()=>{S.sess=null;sv();nav('#/')};window.pushMe=()=>{};window.cxReq=()=>{};
+
+R['limited-edition']=()=>{
+const items=[
+{name:'Naruto',quote:'Make your own noise.',sub:'The loud-hearted original',file:'naruto.webp',tone:'#f36b19'},
+{name:'Sasuke',quote:'Quiet never meant ordinary.',sub:'Built from contrast',file:'sasuke.webp',tone:'#2458a8'},
+{name:'Itachi',quote:'A little mystery. A lasting mark.',sub:'For the ones who notice',file:'itachi.webp',tone:'#78419a'},
+{name:'Kakashi',quote:'Cool under pressure. Different by design.',sub:'Calm is a statement',file:'kakashi.webp',tone:'#d2a92c'},
+{name:'Gaara',quote:'Calm outside. Chaos within.',sub:'Soft-spoken. Unforgettable.',file:'gaara.webp',tone:'#b42d35'}
+];
+return '<main class="le-page"><section class="le-hero"><div class="le-kicker">WIERD™ presents · limited drop 001</div><h1>THE DOODLE<br><span>SERIES.</span></h1><p class="le-intro">Five characters. Five original can artworks. One limited-edition drop made for people who never blend into the background.</p><div class="le-meta"><span><strong>01—05</strong> / Character lineup</span><span>Swipe the story ↓</span><span>WIERD™ · 2026</span></div></section><section class="le-gallery"><div class="le-gallery-head"><h2>Pick your<br>kind of different.</h2><p>Five individual designs<br>One unmistakable attitude</p></div><div class="le-grid">'+items.map((x,i)=>'<article class="le-card" style="--accent:'+x.tone+'"><div class="le-card-visual"><span class="le-number">0'+(i+1)+' / 05</span><span class="le-tag">Limited edition</span><img src="/limited-edition/'+x.file+'" alt="WIERD Naruto Doodle Series '+x.name+' can" loading="lazy" decoding="async"></div><div class="le-card-copy"><div class="le-character">'+x.name+'</div><div class="le-quote">“'+x.quote+'”<br><em>'+x.sub+'</em></div><div class="le-card-foot"><span>WIERD™ · DOODLE SERIES</span><b>01—05</b></div></div></article>').join('')+'</div></section><section class="le-manifesto"><small>Not a mass-produced mood.</small><blockquote><span><i>Different</i></span> looks<br><span><i>good on you.</i></span></blockquote><p>Five designs. Limited run. No repeats promised.</p></section><section class="le-bottom"><span>WIERD™ — WEAR THE DIFFERENT</span><a href="#/products">Explore the main collection ↗</a></section></main>';
+};
+window.limitedEditionAnim=()=>{
+if(!window.gsap)return;
+const cards=gsap.utils.toArray('.le-card');
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){gsap.set(cards,{opacity:1,y:0});gsap.set('.le-manifesto blockquote i',{y:0});return;}
+gsap.to(cards,{opacity:1,y:0,duration:.8,stagger:.11,ease:'power3.out'});
+gsap.from('.le-hero .le-kicker,.le-hero h1,.le-hero .le-intro,.le-meta',{y:34,opacity:0,duration:.8,stagger:.12,ease:'power3.out'});
+gsap.to('.le-manifesto blockquote i',{y:0,duration:1,stagger:.16,ease:'expo.out',scrollTrigger:{trigger:'.le-manifesto',start:'top 78%'}});
+};
+const _routeBeforeLE=route;
+route=function(){_routeBeforeLE();if(location.hash.replace(/^#\/?/,'').split('?')[0]==='limited-edition')window.limitedEditionAnim();};
+
 route();drawer();document.body.classList.add('ready')})();</script></body></html>
